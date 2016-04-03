@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/RGBControl.iml" filepath="$PROJECT_DIR$/RGBControl.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rgb_strip_control.iml" filepath="$PROJECT_DIR$/rgb_strip_control.iml" />
     </modules>
   </component>
 </project>
