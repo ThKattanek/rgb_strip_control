@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
     private static CheckBox check_green;
     private static CheckBox check_blue;
 
+    private static RadioButton single_color_mode;
+    private static RadioButton gardient_mode;
+
     private  CommunicationThread com_thread;
 
     int iRed ,iGreen= 0, iBlue = 0;
@@ -67,6 +71,23 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         RGBSeekBar();
+
+        single_color_mode = (RadioButton) findViewById(R.id.single_color_mode);
+        gardient_mode = (RadioButton) findViewById(R.id.gardient_mode);
+
+        single_color_mode.setOnClickListener(new RadioButton.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                com_thread.SetCommand("colormode=singlecolor");
+            }
+        });
+
+        gardient_mode.setOnClickListener(new RadioButton.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                com_thread.SetCommand("colormode=gardient");
+            }
+        });
 
         com_thread = new CommunicationThread(handler);
         com_thread.start();
