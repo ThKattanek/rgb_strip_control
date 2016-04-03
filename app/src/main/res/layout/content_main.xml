@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="de.emu64.rgbcontrol.MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/seekBar_red"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="24dp"
+        android:layout_alignParentStart="true"
+        android:max="255"
+        android:indeterminate="false" />
+
+    <SeekBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/seekBar_green"
+        android:layout_below="@+id/seekBar_red"
+        android:layout_marginTop="25dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/seekBar_red"
+        android:max="255"
+        android:indeterminate="false"
+        />
+
+    <SeekBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/seekBar_blue"
+        android:layout_below="@+id/seekBar_green"
+        android:layout_marginTop="25dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/seekBar_green"
+        android:max="255"
+        android:indeterminate="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="by Thorsten Kattanek (C) 2016"
+        android:id="@+id/textView2"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/out_red"
+        android:layout_below="@+id/seekBar_blue"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ff0000"
+        android:textStyle="bold"
+        android:layout_marginTop="24dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/out_green"
+        android:layout_below="@+id/out_red"
+        android:textColor="#00A000"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/out_blue"
+        android:layout_below="@+id/out_green"
+        android:textColor="#0000ff"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButton"
+        android:onClick="ClickColor"
+        android:minHeight="50dp"
+        android:layout_below="@+id/out_blue"
+        android:layout_marginTop="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rot"
+        android:id="@+id/check_red"
+        android:checked="false"
+        android:layout_below="@+id/imageButton"
+        android:layout_alignParentStart="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Grün"
+        android:id="@+id/check_green"
+        android:checked="false"
+        android:layout_below="@+id/imageButton"
+        android:layout_centerHorizontal="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Blau"
+        android:id="@+id/check_blue"
+        android:checked="false"
+        android:layout_below="@+id/imageButton"
+        android:layout_alignEnd="@+id/imageButton" />
+
+</RelativeLayout>
