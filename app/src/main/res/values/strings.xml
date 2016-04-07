@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">RGB LED Strip Control</string>
     <string name="action_exit">Beenden</string>
+    <string name="l">by Thorsten Kattanek (C) 2016</string>
 </resources>

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,139 +15,253 @@
     tools:context="de.emu64.rgbcontrol.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <SeekBar
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/seekBar_red"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="24dp"
-        android:layout_alignParentStart="true"
-        android:max="255"
-        android:indeterminate="false" />
-
-    <SeekBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/seekBar_green"
-        android:layout_below="@+id/seekBar_red"
-        android:layout_marginTop="25dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/seekBar_red"
-        android:max="255"
-        android:indeterminate="false"
-        />
-
-    <SeekBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/seekBar_blue"
-        android:layout_below="@+id/seekBar_green"
-        android:layout_marginTop="25dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignEnd="@+id/seekBar_green"
-        android:max="255"
-        android:indeterminate="false" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="by Thorsten Kattanek (C) 2016"
-        android:id="@+id/textView2"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/out_red"
-        android:layout_below="@+id/seekBar_blue"
-        android:layout_centerHorizontal="true"
-        android:textColor="#ff0000"
-        android:textStyle="bold"
-        android:layout_marginTop="24dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/out_green"
-        android:layout_below="@+id/out_red"
-        android:textColor="#00A000"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/out_blue"
-        android:layout_below="@+id/out_green"
-        android:textColor="#0000ff"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageButton"
-        android:onClick="ClickColor"
-        android:minHeight="50dp"
         android:layout_below="@+id/out_blue"
-        android:layout_marginTop="40dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true" />
+        android:layout_centerHorizontal="true">
 
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Rot"
-        android:id="@+id/check_red"
-        android:checked="false"
-        android:layout_below="@+id/imageButton"
-        android:layout_alignParentStart="true" />
-
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Grün"
-        android:id="@+id/check_green"
-        android:checked="false"
-        android:layout_below="@+id/imageButton"
-        android:layout_centerHorizontal="true" />
-
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Blau"
-        android:id="@+id/check_blue"
-        android:checked="false"
-        android:layout_below="@+id/imageButton"
-        android:layout_alignEnd="@+id/imageButton" />
-
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/check_red">
-
-        <RadioButton
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Einzelfarbe"
-            android:id="@+id/single_color_mode"
             android:layout_gravity="center_horizontal"
-            android:checked="true" />
+            android:text="@string/l"
+            android:id="@+id/textView2" />
 
-        <RadioButton
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="R"
+                android:textSize="14dp"
+                android:id="@+id/label1"
+                android:textStyle="bold" />
+
+            <SeekBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/seekBar_red"
+                android:max="255"
+                android:indeterminate="false" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="0"
+                android:textSize="14dp"
+                android:id="@+id/out_red"
+                android:textStyle="bold"
+                android:layout_gravity="center_vertical" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="G"
+                android:textSize="14dp"
+                android:id="@+id/label1"
+                android:textStyle="bold" />
+
+            <SeekBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/seekBar_green"
+                android:max="255"
+                android:indeterminate="false" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="0"
+                android:textSize="14dp"
+                android:id="@+id/out_green"
+                android:textStyle="bold"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="B"
+                android:textSize="14dp"
+                android:id="@+id/label1"
+                android:textStyle="bold" />
+
+            <SeekBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/seekBar_blue"
+                android:max="255"
+                android:indeterminate="false" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="0"
+                android:textSize="14dp"
+                android:id="@+id/out_blue"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:id="@+id/imageButton"
+            android:onClick="ClickColor"
+            android:layout_below="@+id/out_blue"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Rot"
+                android:id="@+id/check_red"
+                android:checked="false"
+                android:layout_above="@+id/radioGroup"
+                android:layout_alignParentStart="true" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Grün"
+                android:id="@+id/check_green"
+                android:checked="false"
+                android:layout_above="@+id/check_red"
+                android:layout_alignParentLeft="true" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Blau"
+                android:id="@+id/check_blue"
+                android:checked="false"
+                android:layout_above="@+id/check_green"
+                android:layout_alignParentLeft="true" />
+        </LinearLayout>
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Farbverlauf"
-            android:id="@+id/gardient_mode"
-            android:layout_gravity="center_horizontal"
-            android:checked="false" />
-    </RadioGroup>
 
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="\nModi"
+            android:textSize="14dp"
+            android:id="@+id/label1"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/radioGroup">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Einzelfarbe"
+                android:id="@+id/single_color_mode"
+                android:layout_gravity="center_horizontal"
+                android:checked="true" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Farbverlauf"
+                android:id="@+id/gardient_mode"
+                android:layout_gravity="center_horizontal"
+                android:checked="false" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Stroboskop"
+                android:id="@+id/strobe_mode"
+                android:layout_gravity="center_horizontal"
+                android:checked="false" />
+
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Geschwindigkeit"
+            android:textSize="14dp"
+            android:id="@+id/label1"
+            android:textStyle="bold" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1">
+
+        <SeekBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/seekBar_speed1"
+            android:max="65535"
+            android:indeterminate="false" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="0"
+            android:textSize="14dp"
+            android:id="@+id/out_speed1"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+
+    </LinearLayout>
 </RelativeLayout>

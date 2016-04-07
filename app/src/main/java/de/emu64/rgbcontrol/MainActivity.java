@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewDebug;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
@@ -42,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
     private static SeekBar seek_bar_blue;
     private static TextView out_text_blue;
 
+    private static SeekBar seek_bar_speed1;
+    private static TextView out_speed1;
+
     private static ImageButton image_button;
 
     private static CheckBox check_red;
@@ -50,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static RadioButton single_color_mode;
     private static RadioButton gardient_mode;
+    private static RadioButton strobe_mode;
 
     private  CommunicationThread com_thread;
 
@@ -74,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
         single_color_mode = (RadioButton) findViewById(R.id.single_color_mode);
         gardient_mode = (RadioButton) findViewById(R.id.gardient_mode);
+        strobe_mode = (RadioButton) findViewById(R.id.strobe_mode);
 
         single_color_mode.setOnClickListener(new RadioButton.OnClickListener(){
             @Override
@@ -86,6 +92,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 com_thread.SetCommand("colormode=gardient");
+            }
+        });
+
+        strobe_mode.setOnClickListener(new RadioButton.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                com_thread.SetCommand("colormode=strobe");
             }
         });
 
@@ -112,13 +125,16 @@ public class MainActivity extends AppCompatActivity {
         out_text_green = (TextView) findViewById(R.id.out_green);
         out_text_blue = (TextView) findViewById(R.id.out_blue);
 
-        out_text_red.setText("Rot: " + iRed);
-        out_text_green.setText("Grün: " + iGreen);
-        out_text_blue.setText("Blau: " + iBlue);
+        out_text_red.setText(Integer.toString(iRed));
+        out_text_green.setText(Integer.toString(iGreen));
+        out_text_blue.setText(Integer.toString(iBlue));
 
         check_red = (CheckBox) findViewById(R.id.check_red);
         check_green = (CheckBox) findViewById(R.id.check_green);
         check_blue = (CheckBox) findViewById(R.id.check_blue);
+
+        seek_bar_speed1 = (SeekBar) findViewById(R.id.seekBar_speed1);
+        out_speed1 = (TextView) findViewById(R.id.out_speed1);
 
         image_button = (ImageButton) findViewById(R.id.imageButton);
 
@@ -130,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                         iRed = seekBar.getProgress();
-                        out_text_red.setText("Rot: " + iRed);
+                        out_text_red.setText(Integer.toString(iRed));
                         image_button.setBackgroundColor(0xff000000 | (iRed << 16) | (iGreen << 8) | iBlue);
                         com_thread.SetCommand("red=" + iRed);
                     }
@@ -141,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onStopTrackingTouch(SeekBar seekBar) {
-                        out_text_red.setText("Rot: " + iRed);
+                        out_text_red.setText(Integer.toString(iRed));
                         image_button.setBackgroundColor(0xff000000 | (iRed << 16) | (iGreen << 8) | iBlue);
                         com_thread.SetCommand("red=" + iRed);
                     }
@@ -153,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                         iGreen = seekBar.getProgress();
-                        out_text_green.setText("Grün: " + iGreen);
+                        out_text_green.setText(Integer.toString(iGreen));
                         image_button.setBackgroundColor(0xff000000 | (iRed << 16) | (iGreen << 8) | iBlue);
                         com_thread.SetCommand("green=" + iGreen);
                     }
@@ -164,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onStopTrackingTouch(SeekBar seekBar) {
-                        out_text_green.setText("Grün: " + iGreen);
+                        out_text_green.setText(Integer.toString(iGreen));
                         image_button.setBackgroundColor(0xff000000 | (iRed << 16) | (iGreen << 8) | iBlue);
                         com_thread.SetCommand("green=" + iGreen);
                     }
@@ -176,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                         iBlue = seekBar.getProgress();
-                        out_text_blue.setText("Blau: " + iBlue);
+                        out_text_blue.setText(Integer.toString(iBlue));
                         image_button.setBackgroundColor(0xff000000 | (iRed << 16) | (iGreen << 8) | iBlue);
                         com_thread.SetCommand("blue=" + iBlue);
                     }
@@ -187,9 +203,29 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onStopTrackingTouch(SeekBar seekBar) {
-                        out_text_blue.setText("Blau: " + iBlue);
+                        out_text_blue.setText(Integer.toString(iBlue));
                         image_button.setBackgroundColor(0xff000000 | (iRed << 16) | (iGreen << 8) | iBlue);
                         com_thread.SetCommand("blue=" + iBlue);
+                    }
+                }
+        );
+
+        seek_bar_speed1.setOnSeekBarChangeListener(
+                new SeekBar.OnSeekBarChangeListener() {
+                    @Override
+                    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                        out_speed1.setText(Integer.toString(seekBar.getProgress()));
+                        com_thread.SetCommand("gardientspeed=" + seekBar.getProgress());
+                    }
+
+                    @Override
+                    public void onStartTrackingTouch(SeekBar seekBar) {
+                    }
+
+                    @Override
+                    public void onStopTrackingTouch(SeekBar seekBar) {
+                        out_speed1.setText(Integer.toString(seekBar.getProgress()));
+                        com_thread.SetCommand("gardientspeed=" + seekBar.getProgress());
                     }
                 }
         );
